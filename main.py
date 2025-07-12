@@ -1,7 +1,7 @@
-import logging
-from aiogram import Bot, Dispatcher, executor, types
-import requests
 import os
+from aiogram import Bot, Dispatcher, executor, types
+import logging
+import requests
 import subprocess
 
 API_TOKEN = "7793678424:AAE2QXy6PGX5HpLtQhAQFTPvN9pW2_rI-x0"
@@ -45,8 +45,7 @@ async def send_movie(message: types.Message):
         await message.reply("❌ حدث خطأ أثناء التحميل أو الرفع.")
         print(str(e))
 
-# Webhook config
-WEBHOOK_HOST = 'https://your-docker-host.com'  # <-- غيّره لاحقًا
+WEBHOOK_HOST = os.getenv('WEBHOOK_HOST')  # هنا الرابط من المتغير البيئي
 WEBHOOK_PATH = '/webhook'
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
